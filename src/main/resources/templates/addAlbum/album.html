@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Tilføj Album</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Tilføj et nyt album</h1>
+<form action="/saveAlbum" method="post" th:object="${album}">
+  <label>Titel: <input type="text" th:field="*{titel}" required></label><br>
+  <label>Spilletid: <input type="time" th:field="*{spilletid}" required></label><br>
+  <label>Udgivelsesår: <input type="number" th:field="*{udgivelsesaar}" required></label><br>
+  <label>Pladeselskab: <input type="text" th:field="*{pladeselskab}" required></label><br>
+  <label>Kunstner: <input type="text" th:field="*{kunstner}" required></label><br>
+  <button type="submit">Tilføj Album</button>
+</form>
+<br>
+<a href="/">Tilbage</a>
+</body>
+</html>
