@@ -7,20 +7,43 @@
 <body>
 <div>
     <h1>Tilføj et nyt album</h1>
-    <form action="/saveAlbum" method="post" th:object="${album}">
-        <label>Titel: <input type="text" th:field="*{titel}" required></label><br>
-        <label>Spilletid: <input type="time" th:field="*{spilletid}" required></label><br>
-        <label>Udgivelsesår: <input type="number" th:field="*{udgivelsesaar}" required></label><br>
-        <label>Pladeselskab: <input type="text" th:field="*{pladeselskab}" required></label><br>
-        <label>Kunstner: <input type="text" th:field="*{kunstner}" required></label><br>
-        <button type="submit">Tilføj Album</button>
+    <form action="/saveAlbum" method="post" th:object="${album}"> <!--form, vi opretter en formular så man kan indtaste-->
+        <table>
+            <tr>
+                <td><label for="titel">Titel:</label></td>
+                <td><input type="text" id="titel" th:field="*{titel}" required></td>
+            </tr>
+            <tr>
+                <td><label for="spilletid">Spilletid:</label></td>
+                <td><input type="time" id="spilletid" th:field="*{spilletid}" required></td>
+            </tr>
+            <tr>
+                <td><label for="udgivelsesaar">Udgivelsesår:</label></td>
+                <td><input type="number" id="udgivelsesaar" th:field="*{udgivelsesaar}" required></td>
+            </tr>
+            <tr>
+                <td><label for="pladeselskab">Pladeselskab:</label></td>
+                <td><input type="text" id="pladeselskab" th:field="*{pladeselskab}" required></td>
+            </tr>
+            <tr>
+                <td><label for="kunstner">Kunstner:</label></td>
+                <td><input type="text" id="kunstner" th:field="*{kunstner}" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit">Tilføj Album</button>
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
-<br>
-<div>
-    <a href="/">Tilbage</a> <!-- href betyder den side vi skal sendes til, i dette tilfælde root-->
 
+<br>
+
+<div>
+    <a href="/">Tilbage</a>
     <a href="https://open.spotify.com/">Gå til Spotify</a>
 </div>
+
 </body>
 </html>

@@ -14,7 +14,7 @@ import java.util.List;
 //lagdelt arkitektur, vi bruger Controller-laget, Service-laget og Repository-laget.
 
 @Controller
-public class HomeController
+public class HomeController //Get, betyder at vi henter data)
 {
     @Autowired
     private AlbumService albumService; //Spring injecter, Autowired opretter en instans af AlbumService, så vi kan bruge Service laget uden at oprette instans manuelt
@@ -34,7 +34,7 @@ public class HomeController
         return "addAlbum/album"; //viser formularen i album.html
     }
 
-    @PostMapping("/saveAlbum")
+    @PostMapping("/saveAlbum") //Post betyder at vi til at sende data til serveren
     public String saveAlbum(@ModelAttribute Album album)
     {
         albumService.addAlbum(album); //sender albummet videre til service laget, som gemmer det i databasen
