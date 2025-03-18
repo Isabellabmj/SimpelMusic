@@ -18,7 +18,7 @@ public class AlbumRepo
     public List<Album> fetchAll()
     {
         String sql = "select * from album";
-        RowMapper<Album> rowMapper = new BeanPropertyRowMapper<>(Album.class); //BeanPro.. er automatiserede rækker, de matcher kolonnenavne fradatabasen med java-variabler i Album klassen
+        RowMapper<Album> rowMapper = new BeanPropertyRowMapper<>(Album.class); //BeanPro.. er automatiserede rækker, de matcher kolonnenavne fra databasen med java-variabler i Album klassen
         return template.query(sql, rowMapper); //query sender SQL forespørgelsen til databasen
     }
 
