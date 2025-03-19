@@ -24,7 +24,7 @@ public class AlbumRepo
 
     public void addAlbum(Album album)
     {
-        String sql = "INSERT INTO album (titel, spilletid, udgivelsesaar, pladeselskab, kunstner) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO album (titel, spilletid, udgivelsesaar, pladeselskab, kunstner) VALUES (?, ?, ?, ?, ?)"; //? er prepared statements
         template.update(sql, album.getTitel(), album.getSpilletid(), album.getUdgivelsesaar(), album.getPladeselskab(), album.getKunstner());
     }
 }
