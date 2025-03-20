@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Album detaljer</title>
+    <link rel="stylesheet" href="/Style.css">
+</head> <!--th (table header), tr(table row), td (table data)-->
+<body>
+<div>
+  <h1 th:text="${album.titel}">Album Titel</h1>
+  <p><strong>Spilletid:</strong> <span th:text="${album.spilletid}"></span></p> <!--strong (fed tekst) span th:text {henter objektet fra albummet} -->
+  <p><strong>Udgivelsesår:</strong> <span th:text="${album.udgivelsesaar}"></span></p>
+  <p><strong>Pladeselskab:</strong> <span th:text="${album.pladeselskab}"></span></p>
+  <p><strong>Kunstner:</strong> <span th:text="${album.kunstner}"></span></p>
+
+  <h2>Sange i albummet:</h2>
+  <table>
+    <tr>
+      <th>Nr.</th>
+      <th>Titel</th>
+      <th>Spilletid</th>
+    </tr>
+    <tr th:each="sang, iterStat : ${sange}"> <!--Thymeleaf løkke, iterStat.index sætter vi til 1, så index starter på 1-->
+      <td th:text="${iterStat.index + 1}"></td>
+      <td th:text="${sang.titel}"></td>
+      <td th:text="${sang.spilletid}"></td>
+    </tr>
+  </table>
+
+
+  <br>
+  <a th:href="@{'edit/' + ${album.albumId}}">Rediger Album</a>
+
+  <a href="/">Tilbage til albumoversigten</a>
+</div>
+</body>
+</html>

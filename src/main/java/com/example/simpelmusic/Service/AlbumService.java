@@ -22,4 +22,9 @@ public class AlbumService
     {
         albumRepo.addAlbum(album);
     }
+
+    public Album findAlbumVedId(int albumId)
+    {
+        return albumRepo.findById(albumId);
+    }
 }

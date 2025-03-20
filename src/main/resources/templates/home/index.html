@@ -16,7 +16,9 @@
         <th>Kunstner</th>
     </tr>
     <tr th:each="album : ${albums}">
-        <td th:text="${album.titel}"></td>
+        <td>
+            <a th:href="@{/album/{id}(id=${album.albumId})}" th:text="${album.titel}"></a>
+        </td>
         <td th:text="${album.spilletid}"></td>
         <td th:text="${album.udgivelsesaar}"></td>
         <td th:text="${album.pladeselskab}"></td>

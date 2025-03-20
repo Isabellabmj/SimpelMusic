@@ -15,7 +15,7 @@ public class SangRepo
     @Autowired
     private JdbcTemplate template;
 
-    public List<Sang> findSangeVedAlbum(int albumId)
+    public List<Sang> findSangVedAlbum(int albumId)
     {
         String sql = "select * from sang where album_id= ? ";
         return template.query(sql, new BeanPropertyRowMapper<>(Sang.class),albumId);
