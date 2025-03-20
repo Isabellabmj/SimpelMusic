@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Rediger et Album</title>
-  <link rel = "stylesheet/" href="/Style.css">
+  <title>Rediger Album</title>
+  <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
+
+<h1>Rediger album</h1>
+
+<form action="/updateOne" method="post" th:object="${album}">
+
+</form>
+
+<br>
+<a href="/">Tilbage</a>
 
 </body>
 </html>

@@ -62,4 +62,48 @@ public class HomeController //Get, betyder at vi henter data)
         model.addAttribute("sange", sange);
         return "home/details";
     }
+
+    @GetMapping("/editAlbum/{albumId}")
+    public String editAlbum(@PathVariable int albumId, Model model) {
+        Album album = albumService.findAlbumVedId(albumId);
+        if (album == null) {
+            return "error/albumNotFound";
+        }
+        model.addAttribute("album", album); // Her sikrer vi, at navnet stemmer overens
+        return "editAlbum";
+    }
+
+
+
+    @PostMapping("/updateOne")
+    public String updateOne(@ModelAttribute Album album) {
+        albumService.updateAlbum(album);
+        return "redirect:/"; // Send brugeren tilbage til forsiden efter opdatering
+    }
+
+    /*@GetMapping("/deleteOne{albumId}")
+    public String deleteOne(@PathVariable("albumId") int albumId)
+    {
+        boolean deleted = albumService.deleteAlbum(albumId);
+        if(deleted)
+        {
+            return "redirect:/";
+        }
+        else
+        {
+            return "redirect:/";
+        }
+    }*/
+
+    @PostMapping("/deleteAlbum/{albumId}")
+    public String deleteAlbum(@PathVariable int albumId) {
+        boolean deleted = albumService.deleteAlbum(albumId);
+        if (deleted) {
+            System.out.println("Album med ID " + albumId + " blev slettet.");
+        } else {
+            System.out.println("Fejl: Kunne ikke slette album med ID " + albumId);
+        }
+        return "redirect:/"; // Send brugeren tilbage til forsiden
+    }
+
 }

@@ -27,4 +27,19 @@ public class AlbumService
     {
         return albumRepo.findById(albumId);
     }
+
+    public void updateAlbum(Album album)
+    {
+        albumRepo.updateAlbum(album);
+    }
+
+    /*public Boolean deleteAlbum(int albumId)
+    {
+        return albumRepo.deleteAlbum(albumId);
+    }*/
+
+    public boolean deleteAlbum(int albumId) {
+        return albumRepo.deleteAlbum(albumId);
+    }
+
 }

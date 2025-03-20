@@ -41,4 +41,20 @@ public class AlbumRepo
         return template.queryForObject(sql, rowMapper, albumId);
     }
 
+    public void updateAlbum(Album album) {
+        String sql = "UPDATE album SET titel=?, spilletid=?, udgivelsesaar=?, pladeselskab=?, kunstner=? WHERE album_id=?";
+        template.update(sql, album.getTitel(), album.getSpilletid(), album.getUdgivelsesaar(), album.getPladeselskab(), album.getKunstner(), album.getAlbumId());
+    }
+
+    /*public Boolean deleteAlbum(int albumID)
+    {
+        String sql = "DELETE FROM album WHERE album_id = ? ";
+        return template.update(sql, albumID) > 0;
+    }*/
+
+    public boolean deleteAlbum(int albumId) {
+        String sql = "DELETE FROM album WHERE album_id = ?";
+        return template.update(sql, albumId) > 0; // Returnerer true, hvis et album blev slettet
+    }
+
 }

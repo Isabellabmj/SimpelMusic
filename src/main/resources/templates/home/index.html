@@ -5,28 +5,62 @@
     <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
+
 <div>
-<h1>Velkommen til min musik</h1>
-<table>
-    <tr>
-        <th>Titel</th>
-        <th>Spilletid</th>
-        <th>Udgivelsesår</th>
-        <th>Pladeselskab</th>
-        <th>Kunstner</th>
-    </tr>
-    <tr th:each="album : ${albums}">
-        <td>
-            <a th:href="@{/album/{id}(id=${album.albumId})}" th:text="${album.titel}"></a>
-        </td>
-        <td th:text="${album.spilletid}"></td>
-        <td th:text="${album.udgivelsesaar}"></td>
-        <td th:text="${album.pladeselskab}"></td>
-        <td th:text="${album.kunstner}"></td>
-    </tr>
-</table>
-<br>
-<a href="/addAlbum">Tilføj nyt album</a>
+    <h1>Velkommen til min musik</h1>
+
+    <table>
+        <tr>
+            <th>Titel</th>
+            <th>Spilletid</th>
+            <th>Udgivelsesår</th>
+            <th>Pladeselskab</th>
+            <th>Kunstner</th>
+            <th>Se detaljer</th>
+            <th>Rediger album</th>
+            <th>Slet album</th>
+        </tr>
+
+        <tr th:each="album : ${albums}">
+            <td>
+                <a th:href="@{/album/{id}(id=${album.albumId})}" th:text="${album.titel}"></a>
+            </td>
+            <td th:text="${album.spilletid}"></td>
+            <td th:text="${album.udgivelsesaar}"></td>
+            <td th:text="${album.pladeselskab}"></td>
+            <td th:text="${album.kunstner}"></td>
+            <td>
+                <div>
+                    <a th:href="@{/album/{albumId}(albumId=${album.albumId})}">
+                        <button>Se detaljer</button>
+                    </a>
+                </div>
+
+            </td>
+            <td>
+
+                <div>
+                    <a th:href="@{/editAlbum/{albumId}(albumId=${album.albumId})}">
+                        <button>Rediger</button>
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <form th:action="@{/deleteAlbum/{albumId}(albumId=${album.albumId})}" method="post" onsubmit="return confirm('Er du sikker på, at du vil slette dette album?');">
+                        <button type="submit">Slet</button>
+                    </form>
+                </div>
+            </td>
+
+            </td>
+
+        </tr>
+    </table>
+
+    <br>
+    <a href="/addAlbum">Tilføj nyt album</a>
 </div>
+
 </body>
 </html>
